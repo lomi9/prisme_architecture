@@ -67,7 +67,7 @@ const HelloHero = () => {
             <span className="absolute bottom-0 left-0 text-white text-5xl font-thin m-4">0{card.id}.</span>
             <span
               ref={(el) => (titleRefs.current[index] = el)}
-              className="hello_hero_title absolute bottom-0 left-34 text-white text-2xl font-thin m-4"
+              className="hello_hero_title absolute bottom-[0.1rem] left-[4rem] text-white text-3xl font-thin m-4 opacity-0"
               style={{ opacity: 0 }}
             >
               {card.title}

@@ -10,7 +10,6 @@ const CustomCursor = () => {
     const cursor = cursorRef.current;
     const halo = haloRef.current;
 
-    // Initialiser le curseur et le halo
     gsap.set([cursor, halo], { xPercent: -50, yPercent: -50, display: "block" });
 
     const moveCursor = (event) => {
