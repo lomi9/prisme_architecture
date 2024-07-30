@@ -1,0 +1,13 @@
+{
+    "Navbar": {
+        "open" : "Menu",
+        "close" : "Close"
+    },
+    "Menu": {
+        "item1" : "Gallery",
+        "item2" : "Journal",
+        "item3" : "Contact Us"
+    }
+
+  }
+  

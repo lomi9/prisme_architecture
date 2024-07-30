@@ -2,32 +2,610 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+body {
+  cursor: none;
+}
+
+.custom-cursor,
+.custom-halo {
+  display: none; /* Gardez les éléments cachés jusqu'à ce qu'ils soient nécessaires */
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9998;
+}
+
+.custom-halo {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 255, 0, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9997;
+  border: 2px solid transparent;
+}
+
+.link-hover-style {
+  font-weight: 400;
+  transition: font-weight 0.3s ease;
+}
+
+.link-hover-style:hover {
+  font-weight: 500; /* Poids du texte légèrement plus gras au survol */
+}
+/* *** HELLO SCREEN *** */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @apply p-0 m-0 h-screen overflow-hidden font-light font-sans;
+}
+
+.hello_container {
+  @apply flex h-full w-full justify-center items-center overflow-hidden;
+  background-image: url("/matiere_beton.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hello_container.columns {
+  @apply content-stretch items-stretch flex-wrap;
+}
+
+.hello_letter {
+  @apply text-center text-black text-[10vmax] font-normal flex items-center justify-center p-2;
+}
+
+.hello_container.columns .hello_letter {
+  @apply basis-[16.6%] text-white bg-transparent bg-opacity-0 border-none;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+.hello_text {
+  @apply text-[5vmax] hidden p-2;
+}
+
+.hello_container.final .hello_text {
+  @apply block;
+}
+
+.p {
+  @apply min-w-[10%];
+  background: rgba(255, 255, 255, 0.31);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(255, 255, 255, 0.21);
+}
+
+.r {
+  @apply min-w-[10%];
+  background: rgba(255, 255, 255, 0.31);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(255, 255, 255, 0.21);
+}
+
+.i {
+  @apply min-w-[10%];
+  background: rgba(255, 255, 255, 0.31);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(255, 255, 255, 0.21);
+}
+
+.s {
+  @apply min-w-[10%];
+  background: rgba(255, 255, 255, 0.31);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(255, 255, 255, 0.21);
+}
+.m {
+  @apply min-w-[10%];
+  background: rgba(255, 255, 255, 0.31);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(255, 255, 255, 0.21);
+}
+.e {
+  @apply min-w-[10%];
+  background: rgba(255, 255, 255, 0.31);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(255, 255, 255, 0.21);
+}
+
+.hello_container.plain .hello_letter {
+  @apply bg-transparent text-white p-0;
+}
+
+/* *** *** */
+
+/* Ajoutez ce CSS à votre fichier de styles */
+
+.column {
+  position: relative; /* Nécessaire pour positionner absolument les titres à l'intérieur */
+}
+
+.hello_hero {
+  display: flex;
+  gap: 1px; /* Ou toute autre valeur appropriée pour l'espacement */
+  height: 100%; /* Assure que le conteneur remplit son parent */
+  width: 100%; /* Assure que le conteneur remplit son parent */
+}
+
+.hello_hero .column {
+  flex: 1; /* La valeur initiale de flex, GSAP animera cela */
+  background-size: cover; /* Pour que les images de fond soient bien couvertes */
+  background-position: center; /* Centrer les images de fond */
+  height: 100%;
+}
+
+.hello_hero_title {
+  position: absolute;
+  bottom: 1rem;
+  left: 5rem;
+  color: white;
+  font-size: 4xl;
+  font-weight: thin;
+  margin: 4px;
+  opacity: 0; /* L'opacité initiale, GSAP gérera les transitions */
+}
+
+/* *** NAVBAR *** */
+/* styles.css ou globals.css selon votre organisation */
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%); /* Part du haut de l'écran */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar-enter {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+/* *** MENU *** */
+
+.menu-overlay {
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+}
+
+.menu-content {
+  transform: skewY(-6deg);
+  transform-origin: top left;
+}
+
+.menu-bottom-line {
+  transform: skewY(-6deg);
+  transform-origin: top left;
+}
+
+.menu-content:hover p {
+  opacity: 0.5;
+  transition: 0.5s;
+  filter: blur(0.5px);
+  color: white;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.menu-content p:hover {
+  opacity: 1;
+  transition: 0.5s;
+  filter: blur(0px);
+  color: #cfc2b6;
+  transition: 0.5s;
+}
+
+/* *** *** */
+
+/* 
+
+.hero-container {
+  @apply flex justify-center items-center overflow-hidden min-w-[100%];
+}
+
+.hero-container.grid,
+.hero-container.columns {
+  @apply items-stretch flex-wrap;
+}
+
+.background {
+  @apply text-center text-white text-[5rem] font-normal flex items-center justify-center p-1.5 relative;
+  background-size: cover;
+  background-position: center;
+  transition: flex-basis 0.5s ease;
+  overflow: hidden;
+  will-change: flex-basis, opacity, background-image; 
+}
+
+.description {
+  @apply absolute bottom-4 left-16 font-thin opacity-0 text-xl;
+  transition: opacity 0.5s ease-in-out;
+  will-change: opacity, transform;
+}
+.description.show {
+  opacity: 1;
+}
+
+.hero_image {
+  @apply absolute top-0 left-0 w-full h-full opacity-0;
+  background-color: green; 
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+  will-change: opacity;
+}
+
+.img-1 {
+  background-image: url("/architecture_4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-2 {
+  background-image: url("/maquette.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-3 {
+  background-image: url("/statue_vr_2.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-4 {
+  background-image: url("/erp_hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-5 {
+  background-image: url("/handi_hero_2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-6 {
+  background-image: url("/primo_acc.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.show-hero_image .hero_image {
+  opacity: 1;
+}
+
+.letter {
+  transition: opacity 2s ease-in-out; 
+  will-change: opacity;
+}
+
+.background .number {
+  @apply absolute bottom-4 left-4 font-thin opacity-0 text-4xl; 
+  transition: opacity 1s ease-in-out; 
+}
+
+.hero-container.intro .background,
+.hero-container.fade .background {
+  background-image: none;
+.hero-container.fade .background {
+  @apply bg-transparent text-white p-0; 
+}
+
+.hero-container.columns .background {
+  @apply basis-1/6;
+  background-color: transparent;
+  color: white;
+}
+
+.for {
+  @apply text-sm text-black p-1 font-light hidden;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hero-container.intro .for,
+.hero-container.intro .gsap {
+  @apply block;
+}
+
+.bg-1 {
+  background: #3a2e20;
+}
+
+.bg-2 {
+  background: #733f1b;
+}
+
+.bg-3 {
+  background: #90807a;
+}
+
+.bg-4 {
+  background: #cfc2b5;
+}
+
+.bg-5 {
+  background: #fafafa;
+}
+
+.bg-6 {
+  background: #90807a;
+}
+
+.hero-container.fade .background {
+  @apply bg-transparent text-black p-0;
+}
+
+.logo {
+  @apply fixed w-24 bottom-5 right-7;
+}
+
+.prisme_top {
+  @apply text-6xl text-black font-thin z-20;
+}
+
+.letter,
+.number {
+  color: inherit; 
+}
+
+
+.splashscreen-background {
+  background-image: url("/");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.prisme-text {
+  font-weight: bold;
+  color: transparent;
+  background-image: url("/matiere_beton.webp"); 
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-size: contain;
+  background-position: bottom;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.1),
+    -1px -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.text-animate {
+  animation: fadeIn 3s ease-in forwards;
+}
+
+.square-line {
+  position: absolute;
+  background-color: black; 
+  height: 2px; 
+  width: 0;
+}
+
+.line-top,
+.line-bottom {
+  position: absolute;
+  background-color: black; 
+  height: 4px; 
+  width: 0; 
+}
+
+.line-top {
+  top: 0;
+  left: 0;
+  transform-origin: left;
+}
+
+.line-bottom {
+  bottom: 0;
+  right: 0;
+  transform-origin: right;
+}
+
+.line-left {
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 4px; 
+  height: 0;
+  transform-origin: bottom;
+  background-color: black;
+}
+
+.line-right {
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 0;
+  transform-origin: top;
+  background-color: black;
+}
+
+*/
+
+/* *** RESET CSS *** */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
